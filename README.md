@@ -4,6 +4,8 @@ This POC demonstrate integration capabilities of clpBNR with the WASM version of
 
 The full documentation of clpBNR can be found here : https://ridgeworks.github.io/clpBNR/CLP_BNR_Guide/CLP_BNR_Guide.html
 
+This POC uses a [clpBNR implementation written by Jan Wielemaker](https://github.com/ridgeworks/clpBNR)
+
 ## Key learnings
 
 ### About clpBNR <> WASM
