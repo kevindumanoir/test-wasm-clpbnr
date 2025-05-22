@@ -30,7 +30,7 @@ function loadFiles(module) {
 async function main() {
     const swipl = await SWIPL({ /*arguments: ['-q'],*/ preRun: loadFiles });
     console.log(swipl.prolog.call("consult('/test-clpbnr.pl')."));
-    const pmtQuery = swipl.prolog.query('Rate::real, pmt(Rate / 12, 24, -75000, 0, pmt_end, 3240), { Rate >= 0.01 }, solve(Rate), print(Rate).');
+    const pmtQuery = swipl.prolog.query('Rate::real, pmt(Rate / 12, 24, -75000, 0, pmt_end, 3240), { Rate >= 0.01 }, solve(Rate), midpoint(Rate, RateVal).');
     console.log(JSON.stringify([pmtQuery.once(), pmtQuery.once(), pmtQuery.once()]));
     console.log(JSON.stringify(swipl.prolog.query('{ X - 2 == 0}.').once()));
 }
