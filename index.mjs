@@ -3,27 +3,26 @@ import { readFileSync } from 'fs';
 
 function loadFiles(module) {
     const plFiles = [
-        "clpBNR/prolog/clpBNR.pl",
-        "clpBNR/prolog/clpBNR/ia_primitives.pl",
-        "clpBNR/prolog/clpBNR/ia_simplify.pl",
-        "clpBNR/prolog/clpBNR/ia_utilities.pl",
+        "clpBNR/clpBNR.pl",
+        "clpBNR/clpBNR/ia_primitives.pl",
+        "clpBNR/clpBNR/ia_simplify.pl",
+        "clpBNR/clpBNR/ia_utilities.pl",
         'test-clpbnr.pl',
       ];
     module.FS.mkdir('/clpBNR');
+    module.FS.mkdir('/clpBNR/clpBNR');
     for (const file of plFiles) {
         console.log(`Loading ${JSON.stringify(file)}`);
-        module.FS.writeFile(`/${file.replace('clpBNR/prolog/', '')}`, readFileSync(file));
+        module.FS.writeFile(`/${file}`, readFileSync(file));
     }
     console.log("Validating file tree: ");
     const rootDir = '/';
-    const files = module.FS.readdir(rootDir);
-    files.forEach(file => {
+    plFiles.forEach(file => {
         try {
             const stat = module.FS.stat(`${rootDir}${file}`);
-            const type = stat.isDirectory() ? 'directory' : 'file';
-            console.log(`- ${file} (${type})`);
+            console.log(`- ${file} (size ${stat.size} B)`);
         } catch (e) {
-            console.log(`- ${file} (error reading stats)`);
+            console.log(`- ${file} (error reading stats ${e.toString()})`);
         }
     });
 }

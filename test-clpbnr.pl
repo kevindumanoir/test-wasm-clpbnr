@@ -1,4 +1,4 @@
-:- use_module('clpBNR.pl').
+:- use_module(clpBNR/clpBNR).
 
 pmt_end. % 0 in Excel
 pmt_beginning. % 1 in Excel
