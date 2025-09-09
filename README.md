@@ -4,7 +4,7 @@ This POC demonstrate integration capabilities of clpBNR with the WASM version of
 
 The full documentation of clpBNR can be found here : https://ridgeworks.github.io/clpBNR/CLP_BNR_Guide/CLP_BNR_Guide.html
 
-This POC uses a [clpBNR implementation written by Jan Wielemaker](https://github.com/ridgeworks/clpBNR)
+This POC uses a [clpBNR implementation written by Rick Workman](https://github.com/ridgeworks/clpBNR)
 
 ## Key learnings
 
@@ -16,6 +16,7 @@ This POC uses a [clpBNR implementation written by Jan Wielemaker](https://github
   - To get the "calculated value", set in the middle of the interval, you can use `midpoint(ValInInterval, Result)`.
   - Same principle applies with `lower_bound/2`, `upper_bound/2`.
 - Once casted to a prolog primitive, numbers are correctly casted in JS.
+- SWIPL-WASM does not support IEE754 floating point rounding modes (cf: https://github.com/ridgeworks/clpBNR/issues/30)
 
 ### Load of prolog facts
 
